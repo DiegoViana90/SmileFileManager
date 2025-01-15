@@ -1,5 +1,5 @@
 # SmileFile Manager
-SmileFile Manager is a modern dental clinic management system built with **.NET 8**, **SQLite**, and **Blazor Pages**.
+SmileFile Manager is a dental clinic management system built with **.NET 8**, **SQLite**, and **Blazor Pages**.
 
 ## Description
 SmileFile Manager is an advanced and intuitive solution designed specifically for dental clinics. It simplifies the management of patient information and streamlines administrative workflows.
