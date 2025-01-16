@@ -9,7 +9,7 @@
 
     <main>
         <div class="top-row px-4">
-            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
+            <span>@currentDateTime</span>
         </div>
 
         <article class="content px-4">
@@ -17,3 +17,31 @@
         </article>
     </main>
 </div>
+
+@code {
+    [Inject]
+    private DateTimeService DateTimeService { get; set; } = null!;
+
+    private string currentDateTime = "";
+
+    protected override void OnInitialized()
+    {
+        currentDateTime = DateTimeService.CurrentDateTime;
+        DateTimeService.OnTimeUpdated += UpdateTime;
+        DateTimeService.Start();
+    }
+
+    private void UpdateTime()
+    {
+        InvokeAsync(() =>
+        {
+            currentDateTime = DateTimeService.CurrentDateTime;
+            StateHasChanged();
+        });
+    }
+
+    public void Dispose()
+    {
+        DateTimeService.OnTimeUpdated -= UpdateTime;
+    }
+}
